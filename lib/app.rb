@@ -3,8 +3,8 @@ require 'markdown'
 class App < Scorched::Controller
   include MCMarkdown
 
-  render_defaults[:dir] = 'views'
-  render_defaults[:layout] = :'layout.haml'
+  render_defaults[:dir] = 'source'
+  render_defaults[:layout] = :'_layout.haml'
   render_defaults[:engine] = 'haml'
 
   RENDERER = Redcarpet::Markdown.new( MCMarkdown::Base )
