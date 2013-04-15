@@ -1,6 +1,7 @@
 %h1 Enter Your Markdown
 
-%form{ action: "/to_html", method: "post" }
-  %textarea{ name: "markdown" }
-  %button{ name: "submit" }
-    Submit
+%form#form{ action: "/to_html", method: "post" }
+  %textarea#text{ name: "markdown" }
+  %a.submit{ href: "#" } Submit
+
+#target

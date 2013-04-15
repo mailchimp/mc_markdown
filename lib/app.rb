@@ -18,7 +18,13 @@ class App < Scorched::Controller
   end
 
   route "/scripts/*.js", method: "GET" do |script|
-    render :"scripts/#{script}.js.coffee", :layout => nil
+    path = File.join( Dir.pwd, render_defaults[:dir], "scripts/#{script}" )
+    if File.exists? "#{path}.js.coffee"
+      render :"scripts/#{script}.js.coffee", :layout => nil
+    else
+      File.open( "#{path}.js" )
+      # render :"scripts/#{script}.js", :engine => "erb", :layout => nil
+    end
   end
 
   post '/to_html' do
