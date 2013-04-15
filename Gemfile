@@ -6,4 +6,8 @@ gem "scorched"
 
 # templating
 gem "haml"
+gem "coffee-script"
 gem "redcarpet"
+
+# runtime
+gem "therubyracer"

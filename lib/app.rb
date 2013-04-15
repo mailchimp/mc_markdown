@@ -5,7 +5,6 @@ class App < Scorched::Controller
 
   render_defaults[:dir] = 'source'
   render_defaults[:layout] = :'_layout.haml'
-  render_defaults[:engine] = 'haml'
 
   RENDERER = Redcarpet::Markdown.new( MCMarkdown::Base )
 
@@ -16,6 +15,10 @@ class App < Scorched::Controller
 
   get '/' do
     render :"index.haml"
+  end
+
+  route "/scripts/*.js", method: "GET" do |script|
+    render :"scripts/#{script}.js.coffee", :layout => nil
   end
 
   post '/to_html' do
