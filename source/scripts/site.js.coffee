@@ -3,7 +3,7 @@ $form = $('#form')
 $input = $('#form #text')
 $target = $('#target')
 
-$input.on "blur", (e) ->
+$input.on "keyup", (e) ->
 
   val = $input.val()
 
