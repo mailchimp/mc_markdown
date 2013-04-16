@@ -1,30 +1,26 @@
+require 'rack'
+require 'rack/contrib/try_static'
+require 'hobbit'
+
 require 'markdown'
 
-class App < Scorched::Controller
+class App < Hobbit::Base
+  include Hobbit::Render
   include MCMarkdown
 
-  render_defaults[:dir] = 'source'
-  render_defaults[:layout] = :'_layout.haml'
+  use Rack::MethodOverride
+  use Rack::Static, root: 'source', urls: ['/scripts/jquery.js']
 
   RENDERER = Redcarpet::Markdown.new( MCMarkdown::Base )
 
-  def render_markdown markdown
-    string = RENDERER.render( markdown )
-    render string, :engine => "erb"
-  end
-
   get '/' do
-    render :"index.haml"
+    render "source/_layout.haml" do
+      render "source/index.haml"
+    end
   end
 
-  route "/scripts/*.js", method: "GET" do |script|
-    path = File.join( Dir.pwd, render_defaults[:dir], "scripts/#{script}" )
-    if File.exists? "#{path}.js.coffee"
-      render :"scripts/#{script}.js.coffee", :layout => nil
-    else
-      File.open( "#{path}.js" )
-      # render :"scripts/#{script}.js", :engine => "erb", :layout => nil
-    end
+  get '/scripts/site.js' do
+    render 'source/scripts/site.js.coffee'
   end
 
   post '/to_html' do
