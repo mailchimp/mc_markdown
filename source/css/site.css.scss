@@ -1,4 +1,5 @@
 @import "_lib/%variables.scss";
+@import "_lib/@mixins.scss";
 @import "_lib/%placeholders.scss";
 
 /*    Base
@@ -7,8 +8,57 @@
 body {
   color: $dark;
   background: $light;
-  font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  font-family: $helvetica;
 }
+
+.sizewrap {
+  padding: 2em 0;
+}
+
+.col {
+  display: inline-block;
+  padding: 0 2%;
+  vertical-align: top;
+  box-sizing: border-box;
+}
+
+.size1of2 { width: percentage(1/2); }
+
+
+/*    Form Style
+---------------------------------------------------------- */
+
+.form-input {
+  background: $light;
+  @include appearance( none );
+  @include border-radius( $radius );
+  @include box-sizing;
+  font-family: $helvetica;
+  font-size: $size-body;
+  outline: 0;
+  padding: 1em;
+
+  height: 600px;
+  height: 80vh;
+  width: 100%;
+  line-height: $baseline * 3;
+
+  @include transitions(
+    border-color .2s linear,
+    box-shadow .2s ease
+  );
+  border-width: 1px;
+  border-style: solid;
+  border-color: mix($k1, $k2, 50%);
+
+  &:hover {
+    border-color: mix( $k2, $k3, 50% );
+  }
+  &:focus {
+    border-color: $k4;
+  }
+}
+
 
 
 /*    Normalize Block

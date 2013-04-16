@@ -1,0 +1,92 @@
+@function compact($vars...) {
+  $list: ();
+  @each $var in $vars {
+    @if $var {
+      $list: append($list, $var, comma);
+    }
+  }
+  @return $list;
+}
+
+@function clean($vars...) {
+  $list: ();
+  @each $var in $vars {
+    @if $var {
+      $list: append($list, $var, space);
+    }
+  }
+  @return $list;
+}
+
+@function prefix($prefix, $property) {
+  $list: ( transform );
+  @each $prop in $list {
+    @if $property == $prop {
+      @return #{$prefix}-#{$property};
+    } @else {
+      @return $property;
+    }
+  }
+}
+
+@mixin box-sizing( $type: border-box ) {
+  -moz-box-sizing: $type;
+  -webkit-box-sizing: $type;
+  box-sizing: $type;
+}
+
+@mixin border-radius( $tl, $tr: $tl, $br: $tl, $bl: $tl ) {
+  -webkit-border-radius: $tl $tr $br $bl;
+     -moz-border-radius: $tl $tr $br $bl;
+          border-radius: $tl $tr $br $bl;
+}
+
+@mixin box-shadow( $args, $arg2: false ){
+  -webkit-box-shadow: compact( $args, $arg2 );
+  box-shadow: compact( $args, $arg2 );
+}
+
+@mixin appearance( $arg: none ) {
+  -moz-appearance: $arg;
+  -webkit-appearance: $arg;
+}
+
+@mixin placeholder() {
+  &::-webkit-input-placeholder  { @content; }
+  &:-moz-placeholder            { @content; }
+  &::-moz-placeholder           { @content; }
+  &:-ms-input-placeholder       { @content; }
+}
+
+@mixin transition( $type: all, $time: .3s, $easing: linear, $delay: false ) {
+       -o-transition: clean( $type, $time, $easing, $delay );
+     -moz-transition: clean( $type, $time, $easing, $delay );
+  -webkit-transition: clean( $type, $time, $easing, $delay );
+          transition: clean( $type, $time, $easing, $delay );
+}
+
+
+@mixin transitions( $args, $args2: false, $args3: false, $args4: false, $args5: false, $args6: false, $args7: false, $args8: false, $args9: false, $args10: false ) {
+
+  $prefixes: ( -o, -moz, -webkit );
+  $properties: compact( $args, $args2, $args3, $args4, $args5, $args6, $args7, $args8, $args9, $args10 );
+
+  /*! omg */
+
+  @each $prefix in $prefixes {
+
+    $prefixed_properties: ();
+
+    @each $property_set in $properties {
+      $set: ();
+      @each $property in $property_set {
+        $set: append( $set, prefix( $prefix, $property ), space );
+      }
+      $prefixed_properties: append( $prefixed_properties, $set, comma );
+    }
+
+    #{$prefix}-transition: $prefixed_properties;
+
+  }
+  transition: $properties;
+}

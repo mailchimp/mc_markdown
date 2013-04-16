@@ -4,7 +4,8 @@
     %title MC Markdown
     %link{ rel: "stylesheet", type: "text/css", href: "/css/site.css" }
   %body.normalize
-    =yield
+    .sizewrap
+      = yield
 
     %script{ src: "/scripts/jquery.js" }
     %script{ src: "/scripts/site.js" }

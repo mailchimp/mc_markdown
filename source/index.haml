@@ -1,6 +1,9 @@
-%h1 Enter Your Markdown
 
-%form#form{ action: "/to_html", method: "post" }
-  %textarea#text{ name: "markdown" }
+.col.size1of2>
+  %h1.h3 Enter Your Markdown
 
-#target
+  %form#form{ action: "/to_html", method: "post" }
+    %textarea.form-input#text{ name: "markdown" }
+
+.col.size1of2>
+  #target
