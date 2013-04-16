@@ -10,7 +10,7 @@ $input.on "keyup", (e) ->
 
   $.ajax(
     type: "POST"
-    url: $form.attr("action")
+    url: "/to_html"
     data: "markdown=" + val
     success: ( data, textStatus, jqXHR ) ->
       change_target( data )
@@ -18,3 +18,4 @@ $input.on "keyup", (e) ->
 
 change_target = ( text ) ->
   $target.html( text )
+

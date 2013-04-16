@@ -32,4 +32,9 @@ class App < Hobbit::Base
     RENDERER.render( request.POST['markdown'] )
   end
 
+  post '/file.md' do
+    response.headers['Content-disposition'] = 'attachment'
+    RENDERER.render( request.POST['markdown'] )
+  end
+
 end
