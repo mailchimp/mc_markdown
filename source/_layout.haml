@@ -2,7 +2,8 @@
 %html
   %head
     %title MC Markdown
-  %body
+    %link{ rel: "stylesheet", type: "text/css", href: "/css/site.css" }
+  %body.normalize
     =yield
 
     %script{ src: "/scripts/jquery.js" }

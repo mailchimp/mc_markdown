@@ -1,0 +1,121 @@
+@import "_lib/%variables.scss";
+@import "_lib/%placeholders.scss";
+
+/*    Base
+------------------------------------------------ */
+
+body {
+  color: $dark;
+  background: $light;
+  font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
+}
+
+
+/*    Normalize Block
+---------------------------------------------------------- */
+
+/*
+** Any container that extends %normalize can use
+** markdown and classless formatting
+**
+** h1 = .subtitle
+** h2 = .heading
+** h3 = .subheading
+** h4 = .subheading
+** h5 = .body-big + bold
+** h6 = .body-big + bold
+**
+** p = .body
+** ul = XX
+** ol = XX
+** li = XX
+** blockquote = XX
+** pre > code = XX
+**
+*/
+.normalize {
+  > *:first-child {
+    margin-top: 0;
+  }
+  h1,
+  .h1 {
+    margin: .5em 0;
+    @extend %subtitle;
+    color: $dark;
+  }
+  h2,
+  .h2 {
+    margin: .5em 0;
+    @extend %heading;
+    color: $dark;
+  }
+  h3,
+  .h3 {
+    margin: .5em 0;
+    @extend %subheading;
+    color: $dark;
+  }
+  h4,
+  .h4 {
+    margin: .5em 0;
+    @extend %subheading;
+    color: $dark;
+  }
+  h5,
+  .h5 {
+    margin: 1em 0;
+    @extend %body;
+    font-weight: bold;
+    color: $dark;
+  }
+  h6,
+  .h6 {
+    margin: 1em 0;
+    @extend %body;
+    font-weight: bold;
+    color: $mid;
+  }
+
+  p,
+  figcaption {
+    margin: 1em 0;
+    @extend %body;
+    color: $mid;
+    & + h1, & + h2, & + h3, & + h4, & + h5, & + h6,
+    & + .h1, & + .h2, & + .h3, & + .h4, & + .h5, & + .h6 {
+      margin-top: 2em;
+    }
+  }
+  a {
+    color: $blue;
+    &:hover {
+      color: $bluedark;
+      text-decoration: underline;
+    }
+  }
+  ul,
+  ol {
+    margin: 1em 0 1.5em 0;
+    @extend %body;
+  }
+  dl {
+    @extend %dl;
+  }
+  img {
+    max-width: 100%;
+  }
+  figcaption {
+    @extend %body;
+  }
+  blockquote {
+    border-left-width: $baseline;
+    border-left-style: solid;
+    border-left-color: $mid;
+    padding: $baseline $gutter;
+    margin: 2em 0;
+    p {
+      margin: 0;
+      @extend %heading;
+    }
+  }
+}

@@ -8,6 +8,7 @@ gem 'thin'
 
 # templating
 gem "haml"
+gem "sass"
 gem "coffee-script"
 gem "redcarpet"
 
