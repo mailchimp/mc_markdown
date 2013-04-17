@@ -1,5 +1,7 @@
 @import "_lib/%variables.scss";
 @import "_lib/@mixins.scss";
+
+@import "_lib/reset.scss";
 @import "_lib/%placeholders.scss";
 
 /*    Base
@@ -23,6 +25,7 @@ body {
   padding: 2em 0;
   @include box-sizing;
   height: 100%;
+  overflow-x: hidden;
 }
 
 .group {
