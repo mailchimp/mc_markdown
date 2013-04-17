@@ -5,6 +5,14 @@
 /*    Base
 ------------------------------------------------ */
 
+html,
+body {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+
 body {
   color: $dark;
   background: $light;
@@ -13,16 +21,45 @@ body {
 
 .sizewrap {
   padding: 2em 0;
+  @include box-sizing;
+  height: 100%;
+}
+
+.group {
+  vertical-align: top;
+  box-sizing: border-box;
+  display: inline-block;
 }
 
 .col {
-  display: inline-block;
+  @extend .group;
   padding: 0 2%;
-  vertical-align: top;
-  box-sizing: border-box;
 }
 
 .size1of2 { width: percentage(1/2); }
+
+
+.document {
+  @extend .group;
+  width: percentage(2/3);
+  margin-left: percentage( 1/2 - 2/3 );
+  background: $white;
+  border: 1px solid $k1;
+  @include border-radius( $radius, 0, 0, $radius );
+  padding: 0 2%;
+  height: 100%;
+  overflow: hidden;
+  overflow-y: auto;
+
+  @include box-shadow( -2px 3px 6px rgba(91, 92, 93, 0.15) );
+
+  position: relative;
+  right: percentage( 1/2 - 2/3 );
+  @include transition( right, .2s, ease );
+  &.is-active {
+    right: 0;
+  }
+}
 
 
 /*    Form Style
@@ -31,9 +68,8 @@ body {
 .form-input {
   background: $light;
   @include appearance( none );
-  @include border-radius( $radius );
   @include box-sizing;
-  font-family: $helvetica;
+  font-family: $monospace;
   font-size: $size-body;
   outline: 0;
   padding: 1em;
@@ -42,20 +78,15 @@ body {
   height: 80vh;
   width: 100%;
   line-height: $baseline * 3;
+  border: none;
 
-  @include transitions(
-    border-color .2s linear,
-    box-shadow .2s ease
-  );
-  border-width: 1px;
-  border-style: solid;
-  border-color: mix($k1, $k2, 50%);
-
+  @include transition( color, .2s, ease );
+  color: $k2;
   &:hover {
-    border-color: mix( $k2, $k3, 50% );
+    color: $mid;
   }
   &:focus {
-    border-color: $k4;
+    color: $dark;
   }
 }
 

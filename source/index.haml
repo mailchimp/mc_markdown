@@ -1,11 +1,8 @@
 
 .col.size1of2>
-  %h1.h3 Enter Your Markdown
-
   %form#form{ action: "/file.md", method: "post" }
-    %textarea.form-input#text{ name: "markdown" }
+    %textarea.form-input#text{ placeholder: "Enter Your Markdown", name: "markdown" }
 
     %input{ value: "Save", type: "submit", name: "submit" }
 
-.col.size1of2>
-  #target
+#target.document>

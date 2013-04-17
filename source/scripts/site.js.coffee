@@ -4,7 +4,11 @@ $form = $('#form')
 $input = $('#form #text')
 $target = $('#target')
 
-$input.on "keyup", (e) ->
+$input.on "focus", (e) ->
+  $target.removeClass("is-active")
+
+$input.on "blur", (e) ->
+  $target.addClass("is-active")
 
   val = $input.val()
 
