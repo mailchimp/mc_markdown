@@ -12,8 +12,8 @@ module MCMarkdown
     end
 
     def list_item text, list_type
-      if /\n\:/.match(text)
-        match_data = /^((.*)\n\:\n)/.match(text)
+      if /\n\:\s*\n/.match(text)
+        match_data = /^((.*)\n\:\s*\n)/.match(text)
         title = "<p>" << match_data[2].gsub('<p>','') << "</p>"
 
         # strip the title from the text, but leave <p> tags

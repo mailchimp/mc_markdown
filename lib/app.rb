@@ -8,11 +8,12 @@ class App < Hobbit::Base
   include Hobbit::Render
   include MCMarkdown
 
-  use Rack::ShowExceptions
   use Rack::MethodOverride
   use Rack::Static, root: 'source', urls: Dir['source/**/*'].keep_if { |f| /\.(css|js)\z/.match(f) }.map{ |f| f.gsub(/(^source)/, '') }
 
-  RENDERER = Redcarpet::Markdown.new( MCMarkdown::Base )
+  def initialize
+    @renderer = Redcarpet::Markdown.new( MCMarkdown::Base )
+  end
 
   get '/' do
     render "source/_layout.haml" do
@@ -29,12 +30,20 @@ class App < Hobbit::Base
   end
 
   post '/to_html' do
-    RENDERER.render( request.POST['markdown'] )
+    begin
+      @renderer.render( request.POST['markdown'] )
+    rescue Exception => msg
+      "Rendering Error:\n#{msg}"
+    end
   end
 
   post '/file.md' do
-    response.headers['Content-disposition'] = 'attachment'
-    RENDERER.render( request.POST['markdown'] )
+    begin
+      response.headers['Content-disposition'] = 'attachment'
+      @renderer.render( request.POST['markdown'] )
+    rescue Exception => msg
+      "Rendering Error:\n#{msg}"
+    end
   end
 
 end
