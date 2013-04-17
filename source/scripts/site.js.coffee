@@ -5,10 +5,10 @@ $input = $('#form #text')
 $target = $('#target')
 
 $input.on "focus", (e) ->
-  $target.removeClass("is-active")
+  $target.parent().removeClass("is-active")
 
 $input.on "blur", (e) ->
-  $target.addClass("is-active")
+  $target.parent().addClass("is-active")
 
   val = $input.val()
 

@@ -59,6 +59,10 @@ body {
   &.is-active {
     right: 0;
   }
+
+  #target {
+    max-width: $max-width;
+  }
 }
 
 
@@ -77,6 +81,7 @@ body {
   height: 600px;
   height: 80vh;
   width: 100%;
+  max-width: $max-width;
   line-height: $baseline * 3;
   border: none;
 

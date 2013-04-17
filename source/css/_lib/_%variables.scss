@@ -14,13 +14,14 @@
 $radius: 4px;
 $baseline: 6px;
 $gutter: $baseline * 3;
+$max-width: 672px;
 
 
 /*      Colors
 ------------------------------------------------- */
 
 $dark: #5b5c5d;
-$light: #f9f9f9;
+$light: #f2f2f2;
 $mid: mix( $dark, $light, 66% );
 $white: #fff;
 
