@@ -72,6 +72,10 @@ body {
 /*    Form Style
 ---------------------------------------------------------- */
 
+hr {
+  margin: 1px;
+}
+
 .form-input {
   background: $light;
   @include appearance( none );
@@ -81,15 +85,23 @@ body {
   outline: 0;
   padding: 1em;
 
-  height: 600px;
-  height: 80vh;
+  height: 3em;
+  height: 5vh;
+  &.textarea {
+    height: 600px;
+    height: 82vh;
+  }
+
   width: 100%;
   max-width: $max-width;
   line-height: $baseline * 3;
   border: none;
 
   @include transition( color, .2s, ease );
-  color: $k2;
+  @include placeholder {
+    color: $k1;
+  }
+  color: $k1;
   &:hover {
     color: $mid;
   }

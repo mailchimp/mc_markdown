@@ -1,9 +1,11 @@
 
 .col.size1of2>
-  %form#form{ action: "/file.md", method: "post" }
-    %textarea.form-input#text{ placeholder: "Enter Your Markdown", name: "markdown" }
+  %form#form{ action: "/to_md", method: "post" }
+    %input.form-input{ placeholder: "Title", name: "title", type: "text" }
+    %hr
+    %textarea.form-input.textarea#text{ placeholder: "Enter Your Markdown", name: "markdown" }
 
-    %input{ value: "Save", type: "submit", name: "submit" }
+    %input{ value: "Save Markdown", type: "submit", name: "submit" }
 
 .document>
   #target

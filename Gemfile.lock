@@ -22,6 +22,7 @@ GEM
     redcarpet (2.2.2)
     ref (1.0.4)
     sass (3.2.7)
+    slugity (0.2.1)
     therubyracer (0.11.4)
       libv8 (~> 3.11.8.12)
       ref
@@ -41,5 +42,6 @@ DEPENDENCIES
   rack-contrib
   redcarpet
   sass
+  slugity
   therubyracer
   thin

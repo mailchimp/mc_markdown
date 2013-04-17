@@ -6,6 +6,9 @@ gem 'hobbit'
 gem 'rack-contrib'
 gem 'thin'
 
+# util
+gem 'slugity'
+
 # templating
 gem "haml"
 gem "sass"

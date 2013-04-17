@@ -1,5 +1,6 @@
 require 'rack'
 require 'rack/contrib/try_static'
+require 'slugity/extend_string'
 require 'hobbit'
 
 require 'markdown'
@@ -37,10 +38,14 @@ class App < Hobbit::Base
     end
   end
 
-  post '/file.md' do
+  post '/to_file' do
+    response.redirect "/#{request.params["title"].to_slug}.md"
+  end
+
+  post '/to_md' do
     begin
-      response.headers['Content-disposition'] = 'attachment'
-      @renderer.render( request.POST['markdown'] )
+      response.headers['Content-disposition'] = "attachment; filename='#{request.params["title"].to_slug}.md'"
+      request.params["markdown"]
     rescue Exception => msg
       "Rendering Error:\n#{msg}"
     end
