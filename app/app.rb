@@ -3,7 +3,7 @@ require 'rack/contrib/try_static'
 require 'slugity/extend_string'
 require 'hobbit'
 
-require 'mc_markdown'
+require 'mc-markdown'
 
 class App < Hobbit::Base
   include Hobbit::Render

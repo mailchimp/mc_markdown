@@ -1,1 +1,1 @@
-rvm use 2.0.0@mc_markdown --create
+rvm use 2.0.0@mc-markdown --create
