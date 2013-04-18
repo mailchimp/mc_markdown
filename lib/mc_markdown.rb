@@ -1,6 +1,7 @@
 require 'redcarpet'
 
 module MCMarkdown
+  VERSION = '0.1.0'
 
   module Lists
 

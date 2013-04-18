@@ -1,3 +1,9 @@
+PATH
+  remote: .
+  specs:
+    mc-markdown (0.1.0)
+      redcarpet (~> 2.2.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -39,6 +45,7 @@ DEPENDENCIES
   coffee-script
   haml
   hobbit
+  mc-markdown!
   rack-contrib
   redcarpet
   sass
