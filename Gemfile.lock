@@ -2,7 +2,9 @@ PATH
   remote: .
   specs:
     mc-markdown (0.1.0)
+      nokogiri (~> 1.5.6)
       redcarpet (~> 2.2.2)
+      slugity (~> 0.2.1)
 
 GEM
   remote: https://rubygems.org/
@@ -22,6 +24,7 @@ GEM
       tilt
     libv8 (3.11.8.17)
     multi_json (1.7.2)
+    nokogiri (1.5.9)
     rack (1.5.2)
     rack-contrib (1.1.0)
       rack (>= 0.9.1)
