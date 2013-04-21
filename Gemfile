@@ -8,7 +8,8 @@ group :development do
   # framework
   gem 'hobbit'
   gem 'rack-contrib'
-  gem 'thin'
+  gem 'unicorn'
+  gem 'foreman'
 
   # util
   gem 'slugity'
