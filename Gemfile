@@ -3,7 +3,7 @@ ruby "2.0.0"
 
 gemspec
 
-group :development do
+group :heroku do
 
   # framework
   gem 'hobbit'
