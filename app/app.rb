@@ -2,15 +2,17 @@ require 'rack'
 require 'rack/contrib/try_static'
 require 'slugity/extend_string'
 require 'hobbit'
+require 'sequel'
 
 require 'mc-markdown'
 
 class App < Hobbit::Base
   include Hobbit::Render
-  include MCMarkdown
 
   use Rack::MethodOverride
   use Rack::Static, root: 'source', urls: Dir['source/**/*'].keep_if { |f| /\.(css|js)\z/.match(f) }.map{ |f| f.gsub(/(^source)/, '') }
+
+  DB = Sequel.connect(ENV['DATABASE_URL'] || 'postgres://localhost/mc_markdown')
 
   def initialize
     @renderer = Redcarpet::Markdown.new( MCMarkdown::Base )

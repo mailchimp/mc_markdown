@@ -28,6 +28,7 @@ GEM
     libv8 (3.11.8.17)
     multi_json (1.7.2)
     nokogiri (1.5.9)
+    pg (0.15.1)
     rack (1.5.2)
     rack-contrib (1.1.0)
       rack (>= 0.9.1)
@@ -35,6 +36,7 @@ GEM
     redcarpet (2.2.2)
     ref (1.0.4)
     sass (3.2.7)
+    sequel (3.46.0)
     slugity (0.2.1)
     therubyracer (0.11.4)
       libv8 (~> 3.11.8.12)
@@ -55,9 +57,11 @@ DEPENDENCIES
   haml
   hobbit
   mc-markdown!
+  pg
   rack-contrib
   redcarpet
   sass
+  sequel
   slugity
   therubyracer
   unicorn

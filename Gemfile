@@ -11,6 +11,10 @@ group :heroku do
   gem 'unicorn'
   gem 'foreman'
 
+  # models
+  gem 'sequel'
+  gem 'pg'
+
   # util
   gem 'slugity'
 
