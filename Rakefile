@@ -5,8 +5,6 @@ end
 
 namespace :db do
 
-  db_url = ENV['HEROKU_POSTGRESQL_AMBER_URL'] || 'postgres://localhost/mc_markdown'
-
   task :load_schema do
     system "sequel -E -m db #{db_url}"
   end
@@ -19,6 +17,10 @@ namespace :db do
     end
   end
 
+  def db_url
+    ENV['HEROKU_POSTGRESQL_AMBER_URL'] || 'postgres://localhost/mc_markdown'
+  end
+
   def newest_migration
     out = `ls db/migrations`
     out.split.map { |m| m[0..2] }.last
@@ -29,6 +31,6 @@ namespace :db do
     require 'sequel/extensions/schema_dumper'
 
     schema_file = "db/#{newest_migration}_schema.rb"
-    `touch #{schema_file} && ECHO '#{Sequel.connect('#{db_url}').dump_schema_migration}' > #{schema_file}`
+    `touch #{schema_file} && ECHO '#{Sequel.connect(db_url).dump_schema_migration}' > #{schema_file}`
   end
 end
