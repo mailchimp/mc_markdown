@@ -19,20 +19,20 @@ class App < Hobbit::Base
 
   get '/' do
     @document = Document.create( :content => "" )
-    response.redirect "/doc/#{@document.id}"
+    response.redirect "/doc/#{@document.slug}"
   end
 
-  get '/doc/:id' do
-    @document = Document.where( :id => request.params[:id] ).first
+  get '/doc/:slug' do
+    @document = Document.where( :slug => request.params[:slug] ).first
     render "source/_layout.haml" do
       render "source/index.haml"
     end
   end
 
-  post '/doc/:id/save' do
-    @document = Document.where( :id => request.params[:id] ).first
+  post '/doc/:slug/save' do
+    @document = Document.where( :slug => request.params[:slug] ).first
     @document.update( :name => request.POST['name'], :content => request.POST['content'] )
-    response.redirect "/doc/#{@document.id}"
+    response.redirect "/doc/#{@document.slug}"
   end
 
   get '/scripts/site.js' do

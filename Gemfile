@@ -17,6 +17,7 @@ group :heroku do
 
   # util
   gem 'slugity'
+  gem 'uuidtools'
 
   # templating
   gem "haml"

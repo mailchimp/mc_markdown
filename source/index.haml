@@ -1,6 +1,6 @@
 
 .col.size1of2>
-  %form#form{ action: "/doc/#{@document.id}/save", method: "post" }
+  %form#form{ action: "/doc/#{@document.slug}/save", method: "post" }
     %input.form-input{ placeholder: "Title", name: "name", type: "text", value: ( defined? @document.name ) ? @document.name : nil }
     %hr
     %textarea.form-input.textarea#text{ placeholder: "Enter Your Markdown", name: "content" }>= ( defined? @document.content ) ? @document.content : nil
