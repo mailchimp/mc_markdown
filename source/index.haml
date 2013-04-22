@@ -1,11 +1,11 @@
 
 .col.size1of2>
-  %form#form{ action: "/to_md", method: "post" }
-    %input.form-input{ placeholder: "Title", name: "title", type: "text" }
+  %form#form{ action: "/doc/#{@document.id}/save", method: "post" }
+    %input.form-input{ placeholder: "Title", name: "name", type: "text", value: ( defined? @document.name ) ? @document.name : nil }
     %hr
-    %textarea.form-input.textarea#text{ placeholder: "Enter Your Markdown", name: "markdown" }
+    %textarea.form-input.textarea#text{ placeholder: "Enter Your Markdown", name: "content" }>= ( defined? @document.content ) ? @document.content : nil
     %hr
-    %input{ value: "Save Markdown", type: "submit", name: "submit" }
+    %input{ value: "Save", type: "submit", name: "submit" }
 
 .document>
-  #target
+  #target= ( defined? @document.to_html ) ? @document.to_html : nil

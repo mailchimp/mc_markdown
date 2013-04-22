@@ -36,7 +36,7 @@ body {
 
 .col {
   @extend .group;
-  padding: 0 2%;
+  padding: 0 24px;
 }
 
 .size1of2 { width: percentage(1/2); }
@@ -90,7 +90,7 @@ hr {
   height: 5vh;
   &.textarea {
     height: 600px;
-    height: 82vh;
+    height: 78vh;
   }
 
   width: 100%;

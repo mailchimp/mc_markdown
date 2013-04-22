@@ -15,7 +15,7 @@ $input.on "blur", (e) ->
   $.ajax(
     type: "POST"
     url: "/to_html"
-    data: "markdown=" + val
+    data: "content=" + val
     success: ( data, textStatus, jqXHR ) ->
       change_target( data )
   )
