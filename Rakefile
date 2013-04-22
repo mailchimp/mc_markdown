@@ -5,7 +5,7 @@ end
 
 namespace :db do
 
-  db_url = ENV['DATABASE_URL'] || 'postgres://localhost/mc_markdown'
+  db_url = ENV['HEROKU_POSTGRESQL_AMBER_URL'] || 'postgres://localhost/mc_markdown'
 
   task :load_schema do
     system "sequel -E -m db postgres://localhost/mc_markdown"

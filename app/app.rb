@@ -12,7 +12,7 @@ class App < Hobbit::Base
   use Rack::MethodOverride
   use Rack::Static, root: 'source', urls: Dir['source/**/*'].keep_if { |f| /\.(css|js)\z/.match(f) }.map{ |f| f.gsub(/(^source)/, '') }
 
-  DB = Sequel.connect(ENV['DATABASE_URL'] || 'postgres://localhost/mc_markdown')
+  DB = Sequel.connect(ENV['HEROKU_POSTGRESQL_AMBER_URL'] || 'postgres://localhost/mc_markdown')
   MD = Redcarpet::Markdown.new( MCMarkdown::Base )
 
   require 'models/document'
