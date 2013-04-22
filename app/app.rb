@@ -13,15 +13,26 @@ class App < Hobbit::Base
   use Rack::Static, root: 'source', urls: Dir['source/**/*'].keep_if { |f| /\.(css|js)\z/.match(f) }.map{ |f| f.gsub(/(^source)/, '') }
 
   DB = Sequel.connect(ENV['DATABASE_URL'] || 'postgres://localhost/mc_markdown')
+  MD = Redcarpet::Markdown.new( MCMarkdown::Base )
 
-  def initialize
-    @renderer = Redcarpet::Markdown.new( MCMarkdown::Base )
-  end
+  require 'models/document'
 
   get '/' do
+    @document = Document.create( :content => "" )
+    response.redirect "/doc/#{@document.id}"
+  end
+
+  get '/doc/:id' do
+    @document = Document.where( :id => request.params[:id] ).first
     render "source/_layout.haml" do
       render "source/index.haml"
     end
+  end
+
+  post '/doc/:id/save' do
+    @document = Document.where( :id => request.params[:id] ).first
+    @document.update( :name => request.POST['name'], :content => request.POST['content'] )
+    response.redirect "/doc/#{@document.id}"
   end
 
   get '/scripts/site.js' do
@@ -34,7 +45,7 @@ class App < Hobbit::Base
 
   post '/to_html' do
     begin
-      @renderer.render( request.POST['markdown'] )
+      MD.render( request.POST['content'] )
     rescue Exception => msg
       "Rendering Error:\n#{msg}"
     end
@@ -43,7 +54,7 @@ class App < Hobbit::Base
   post '/to_md' do
     begin
       response.headers['Content-disposition'] = "attachment; filename='#{request.params["title"].to_slug}.md'"
-      request.params["markdown"]
+      request.params["content"]
     rescue Exception => msg
       "Rendering Error:\n#{msg}"
     end
