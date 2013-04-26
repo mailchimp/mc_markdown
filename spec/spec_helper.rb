@@ -16,8 +16,12 @@ def output_string path
   return IO.read( path )
 end
 
+def render_string str, renderer=BASE
+  renderer.render(str).strip
+end
+
 def test_fixture path, renderer=BASE
-  renderer.render( input_string(path) ).should == output_string(path)
+  render_string( input_string(path) ).should == output_string(path)
 end
 
 describe 'spec_helper' do
