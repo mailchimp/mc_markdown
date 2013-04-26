@@ -6,7 +6,7 @@ describe MCMarkdown::SafeMergeTags do
     render_string("*foo*").should == "<p><em>foo</em></p>"
   end
 
-  it "escapes merge tags from emphasisi" do
+  it "escapes merge tags from emphasisis" do
     render_string("*|MERGE:TAG|*").should == "<p>*|MERGE:TAG|*</p>"
   end
 
