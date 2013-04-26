@@ -4,8 +4,13 @@ module MCMarkdown
     BLOCK_QUOTE_PATTERN = /^>.*$\n(\n*)^>/
 
     def preprocess doc
-      doc.gsub(BLOCK_QUOTE_PATTERN) do |match|
+      doc.gsub!(BLOCK_QUOTE_PATTERN) do |match|
         match << " {{break_quote}}"
+      end
+      if defined?(super)
+        return super(doc)
+      else
+        return doc
       end
     end
 

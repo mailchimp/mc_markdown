@@ -10,6 +10,11 @@ module MCMarkdown
         doc.gsub! /#{bad_regex}/xi, correction
       end
       doc
+      if defined?(super)
+        return super(doc)
+      else
+        return doc
+      end
     end
   end
 end
