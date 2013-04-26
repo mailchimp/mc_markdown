@@ -29,3 +29,10 @@ group :heroku do
   gem "therubyracer"
 
 end
+
+group :testing do
+
+  gem 'autotest'
+  gem 'respec'
+
+end
