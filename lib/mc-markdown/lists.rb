@@ -14,16 +14,16 @@ module MCMarkdown
         title = "<p>" << match_data[2].gsub('<p>','') << "</p>"
 
         # strip the title from the text, but leave <p> tags
-        text = text.gsub( match_data[1].gsub('<p>',''), '')
+        text = text.gsub( match_data[1].gsub(/\<\/?p\>/,''), '')
 
         # strip opening and closing p tags
-        text = text.gsub( /(\A\<p\>|\<\/p\>\z)/, '' )
+        text = text.strip.gsub( /(\A\<p\>|\<\/p\>\z)/, '' )
 
         text = "<p>" << text << "</p>"
 
         "<dt>#{title}</dt><dd>#{text}</dd>"
       else
-        "<li>#{text}</li>"
+        "<li>#{text.strip}</li>"
       end
     end
 
