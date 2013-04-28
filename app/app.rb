@@ -13,10 +13,7 @@ class App < Hobbit::Base
   use Rack::Static, root: 'source', urls: Dir['source/**/*'].keep_if { |f| /\.(css|js)\z/.match(f) }.map{ |f| f.gsub(/(^source)/, '') }
 
   MD = Redcarpet::Markdown.new( MCMarkdown::Base )
-
-  unless defined?(DB)
-    DB = Sequel.connect(ENV['HEROKU_POSTGRESQL_AMBER_URL'] || 'postgres://localhost/mc_markdown')
-  end
+  DB = Sequel.connect(ENV['HEROKU_POSTGRESQL_AMBER_URL'] || 'postgres://localhost/mc_markdown')
 
   require 'models/document'
 
