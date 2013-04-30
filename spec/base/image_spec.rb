@@ -11,8 +11,15 @@ describe MCMarkdown::Image do
   end
 
   it "generates a figcaption when passed a title" do
-    render_string('![alt text](/path/image.jpg "the caption")').should == "<p><figure class='img'><img src='/path/image.jpg' alt='alt text' /><figcaption><p>the caption</p></figcaption></figure></p>"
+    render_string('![alt text](/path/image.jpg "the caption")').should == "<p><figure class='img '><img src='/path/image.jpg' alt='alt text' /><figcaption><p>the caption</p></figcaption></figure></p>"
   end
 
+  it "generates an image with a class" do
+    render_string('![{img}](/path/image.jpg)').should == "<p><img src='/path/image.jpg' alt='' class='img' /></p>"
+  end
+
+  it "generates a figure with a class" do
+    render_string('![alt text {full}](/path/image.jpg "the caption")').should == "<p><figure class='img full'><img src='/path/image.jpg' alt='alt text' /><figcaption><p>the caption</p></figcaption></figure></p>"
+  end
 
 end
