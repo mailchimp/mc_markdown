@@ -28,5 +28,18 @@ module MCMarkdown
       end
     end
 
+    # need to strip paragraph tags from around
+    # figures, has potential to cause invalid markup
+    def postprocess doc
+
+      doc = doc.gsub( /<p><figure/, '<figure' ).gsub( /<\/figure><\/p>/, '</figure>' )
+
+      if defined?(super)
+        return super(doc)
+      else
+        return doc
+      end
+    end
+
   end
 end
