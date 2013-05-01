@@ -1,3 +1,6 @@
+# 0.2.2
+- strip <p> tags surrounding figures
+
 # 0.2.1
 - add ability to specify classes for images/figures
 
