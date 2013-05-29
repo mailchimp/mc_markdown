@@ -16,8 +16,8 @@ Gem::Specification.new do |s|
   s.require_path  = "lib"
 
   # Utility
-  s.add_dependency("redcarpet", ["~> 2.2.2"])
-  s.add_dependency("nokogiri", ["~> 1.5.6"])
-  s.add_dependency("slugity", ["~> 0.3"])
+  s.add_dependency "redcarpet", "~> 2.2"
+  s.add_dependency "nokogiri", "~> 1.5"
+  s.add_dependency "slugity"
 
 end

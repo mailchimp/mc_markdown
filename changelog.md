@@ -1,3 +1,6 @@
+# 0.2.3
+- loosen dependencies
+
 # 0.2.2
 - strip <p> tags surrounding figures
 
