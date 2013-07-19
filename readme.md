@@ -3,7 +3,11 @@
 ```bash
 $ bundle install
 # => install required gems
+```
 
-$ rackup config.ru
-# => kicks off the app server
+# Testing
+
+```bash
+$ rspec
+# => runs the test suite
 ```
