@@ -1,3 +1,6 @@
+# 0.3.0
+- remove the bolt-on application
+
 # 0.2.3
 - loosen dependencies
 
