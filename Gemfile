@@ -7,8 +7,8 @@ group :heroku do
 
   # framework
   gem 'hobbit'
-  gem 'rack-contrib'
-  gem 'unicorn'
+  gem 'rack-contrib' # this gets us try-static
+  gem 'puma' # nice little server from evan phoenix
   gem 'foreman'
 
   # models

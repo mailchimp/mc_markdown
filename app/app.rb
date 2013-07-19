@@ -1,9 +1,18 @@
+# Rack Middleware
 require 'rack'
 require 'rack/contrib/try_static'
+
+# Utility
 require 'slugity/extend_string'
+
+# Framework Stuff
 require 'hobbit'
 require 'sequel'
 
+# Renderers
+require 'haml'
+require 'sass'
+require 'coffee_script'
 require 'mc-markdown'
 
 class App < Hobbit::Base

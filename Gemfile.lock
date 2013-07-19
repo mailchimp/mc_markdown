@@ -1,10 +1,10 @@
 PATH
   remote: .
   specs:
-    mc-markdown (0.2.0)
-      nokogiri (~> 1.5.6)
-      redcarpet (~> 2.2.2)
-      slugity (~> 0.2.1)
+    mc-markdown (0.2.3)
+      nokogiri (~> 1.5)
+      redcarpet (~> 2.2)
+      slugity
 
 GEM
   remote: https://rubygems.org/
@@ -28,15 +28,17 @@ GEM
     hobbit (0.0.2)
       rack
       tilt
-    kgio (2.8.0)
     libv8 (3.11.8.17)
+    mini_portile (0.5.1)
     multi_json (1.7.2)
-    nokogiri (1.5.9)
+    nokogiri (1.6.0)
+      mini_portile (~> 0.5.0)
     pg (0.15.1)
+    puma (2.3.2)
+      rack (>= 1.1, < 2.0)
     rack (1.5.2)
     rack-contrib (1.1.0)
       rack (>= 0.9.1)
-    raindrops (0.11.0)
     redcarpet (2.2.2)
     ref (1.0.4)
     respec (0.5.0)
@@ -57,10 +59,6 @@ GEM
       ref
     thor (0.18.1)
     tilt (1.3.7)
-    unicorn (4.6.2)
-      kgio (~> 2.6)
-      rack
-      raindrops (~> 0.7)
     uuidtools (2.1.3)
 
 PLATFORMS
@@ -74,6 +72,7 @@ DEPENDENCIES
   hobbit
   mc-markdown!
   pg
+  puma
   rack-contrib
   redcarpet
   respec
@@ -81,5 +80,4 @@ DEPENDENCIES
   sequel
   slugity
   therubyracer
-  unicorn
   uuidtools
