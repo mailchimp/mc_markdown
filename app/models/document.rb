@@ -3,7 +3,7 @@ require 'uuidtools'
 class Document < Sequel::Model(:documents)
 
   def before_create
-    self.slug = UUIDTools::UUID.timestamp_create().to_s
+    self.slug = generate_slug
     super
   end
 
@@ -24,4 +24,9 @@ class Document < Sequel::Model(:documents)
     App::MD.render( content )
   end
 
+  private
+
+    def generate_slug
+      UUIDTools::UUID.timestamp_create().to_s
+    end
 end
