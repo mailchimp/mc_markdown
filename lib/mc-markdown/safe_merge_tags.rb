@@ -2,11 +2,15 @@ module MCMarkdown
   module SafeMergeTags
 
     def emphasis text
-      unless /^\| [\w|\:]* \|$/x.match(text)
+      unless /^\| [\w|\:|\_|<|>|\/]* \|$/x.match(text)
         "<em>#{text}</em>"
       else
-        "*#{text}*"
+        "*#{convert_em_tags_to_underscores(text)}*"
       end
+    end
+
+    def convert_em_tags_to_underscores string
+      string.gsub( /<\/?em>/, '_' )
     end
 
   end
