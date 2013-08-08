@@ -1,3 +1,12 @@
+# Use
+
+In your Gemfile:
+
+```ruby
+gem "mc-markdown", :git => 'git@github.com:mailchimp/mc-markdown.git'
+```
+
+
 # Installation
 
 ```bash
