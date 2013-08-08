@@ -10,4 +10,8 @@ describe MCMarkdown::SafeMergeTags do
     render_string("*|MERGE:TAG|*").should == "<p>*|MERGE:TAG|*</p>"
   end
 
+  it "handles merge tags with underscores and other formating" do
+    render_string("*|MERGE_TAG_FOO|*").should == "<p>*|MERGE_TAG_FOO|*</p>"
+  end
+
 end
