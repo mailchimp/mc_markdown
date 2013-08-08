@@ -1,6 +1,7 @@
 # Add ./lib to the load path
 $LOAD_PATH << File.join( Dir.pwd, '/lib' )
 
+require 'pry'
 require 'mc-markdown'
 
 BASE = Redcarpet::Markdown.new( MCMarkdown::Base )
