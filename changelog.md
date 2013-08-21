@@ -1,3 +1,7 @@
+# 0.3.1
+- fix the header_with_id
+- add an Extensions module for rendering modules that need extensions
+
 # 0.3.0
 - remove the bolt-on application
 
