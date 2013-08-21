@@ -1,27 +1,32 @@
+require 'slugity/extend_string'
+
 module MCMarkdown
   module HeaderWithID
 
     def header text, header_level
+      return "<h#{header_level}>#{text}</h#{header_level}>" if header_level != 1
 
-      # remove a leading or trailing space if it is there
-      text.gsub!( /(^\s)|(\s$)/, '' )
-      slug = text.to_slug
+      slug = text.strip.to_slug
+      default = "section"
 
       # add ids to all h1 headers (pray they're unique)
-      if defined? extensions[:template_tag_headers] && extensions[:template_tag_headers]
-        namespace = "{{section_id}}"
+      if defined?(extensions)
+        if extensions.fetch(:template_tag_headers){ false }
+          namespace = "{{section_id}}"
+        else
+          namespace = "#{ extensions.fetch(:slug){ default } }-#{slug}"
+        end
       else
-        namespace = ( defined? extensions[:slug] ) ? "extensions[:slug]" : "section"
-        namespace << "-#{slug}"
+        namespace = "#{default}-#{slug}"
       end
 
+      return "<h#{header_level} id='#{namespace}'>#{text}</h#{header_level}>"
+    end
 
-      if header_level == 1
-        return "<h1 id='#{namespace}'>#{text}</h1>"
-      else
-        return "<h#{header_level}>#{text}</h#{header_level}>"
+    def self.included mod
+      unless defined?(extensions)
+        mod.send :include, Extensions
       end
-
     end
 
   end

@@ -1,5 +1,8 @@
 require 'redcarpet'
 
+# Util
+require 'mc-markdown/extensions'
+
 # Modules
 require 'mc-markdown/common_misspellings'
 require 'mc-markdown/header_with_id'
