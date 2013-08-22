@@ -6,5 +6,6 @@ module MCMarkdown
     include ::MCMarkdown::SafeMergeTags
     include ::MCMarkdown::CommonMisspellings
     include ::MCMarkdown::Blockquote
+    include ::MCMarkdown::Blocks
   end
 end
