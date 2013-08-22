@@ -1,3 +1,5 @@
+- add callout block formatter
+
 # 0.3.1
 - fix the header_with_id
 - add an Extensions module for rendering modules that need extensions
