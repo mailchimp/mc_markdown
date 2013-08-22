@@ -2,6 +2,7 @@ require 'redcarpet'
 
 # Util
 require 'mc-markdown/extensions'
+require 'mc-markdown/renderers'
 
 # Formatters
 require 'mc-markdown/formatters/common_misspellings'
