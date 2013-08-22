@@ -1,5 +1,5 @@
 module MCMarkdown
   class Guidebook < MCMarkdown::Base
-    include ::MCMarkdown::HeaderWithID
+    include ::MCMarkdown::Formatter::HeaderWithID
   end
 end

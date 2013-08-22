@@ -2,16 +2,17 @@ require 'redcarpet'
 
 # Util
 require 'mc-markdown/extensions'
+require 'mc-markdown/renderers'
 
-# Modules
-require 'mc-markdown/common_misspellings'
-require 'mc-markdown/header_with_id'
-require 'mc-markdown/image'
-require 'mc-markdown/links'
-require 'mc-markdown/lists'
-require 'mc-markdown/safe_merge_tags'
-require 'mc-markdown/blockquote'
-require 'mc-markdown/blocks'
+# Formatters
+require 'mc-markdown/formatters/common_misspellings'
+require 'mc-markdown/formatters/header_with_id'
+require 'mc-markdown/formatters/image'
+require 'mc-markdown/formatters/links'
+require 'mc-markdown/formatters/lists'
+require 'mc-markdown/formatters/escape_merge_tags'
+require 'mc-markdown/formatters/blockquote'
+require 'mc-markdown/formatters/blocks'
 
 # Renderers
 require 'mc-markdown/renderers/base'

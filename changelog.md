@@ -1,4 +1,7 @@
 - add callout block formatter
+- add a Renderers module, now have a class method to pull memoized instances of renderers
+- reorganize a bit, moved "modules" and renamed them to "formatters"
+
 
 # 0.3.1
 - fix the header_with_id

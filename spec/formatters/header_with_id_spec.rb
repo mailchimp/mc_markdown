@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe MCMarkdown::HeaderWithID do
+describe MCMarkdown::Formatter::HeaderWithID do
 
   class Subject < Redcarpet::Render::HTML
-    include ::MCMarkdown::HeaderWithID
+    include ::MCMarkdown::Formatter::HeaderWithID
   end
 
   def renderer options={}

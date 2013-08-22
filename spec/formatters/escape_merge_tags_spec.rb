@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe MCMarkdown::SafeMergeTags do
+describe MCMarkdown::Formatter::EscapeMergeTags do
 
   it "lets things be emphasized as normal" do
     render_string("*foo*").should == "<p><em>foo</em></p>"
