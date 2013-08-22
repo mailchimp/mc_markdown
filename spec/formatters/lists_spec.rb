@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe MCMarkdown::Lists do
+describe MCMarkdown::Formatter::Lists do
 
   it "generates unordered lists" do
     test_fixture '/base/lists/ul'

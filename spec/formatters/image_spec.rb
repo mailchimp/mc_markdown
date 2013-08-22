@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe MCMarkdown::Image do
+describe MCMarkdown::Formatter::Image do
 
   it "generates an image with no alt text" do
     render_string('![](/path/image.jpg)').should == "<p><img src='/path/image.jpg' alt='' /></p>"

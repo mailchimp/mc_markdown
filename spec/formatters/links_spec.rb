@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe MCMarkdown::Links do
+describe MCMarkdown::Formatter::Links do
 
   it "generates a plain link" do
     render_string( "[text](/path)" ).should == "<p><a href='/path'>text</a></p>"
