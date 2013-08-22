@@ -1,3 +1,4 @@
+# 0.4.0
 - add callout block formatter
 - add a Renderers module, now have a class method to pull memoized instances of renderers
 - reorganize a bit, moved "modules" and renamed them to "formatters"
