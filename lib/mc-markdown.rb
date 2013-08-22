@@ -11,6 +11,7 @@ require 'mc-markdown/links'
 require 'mc-markdown/lists'
 require 'mc-markdown/safe_merge_tags'
 require 'mc-markdown/blockquote'
+require 'mc-markdown/blocks'
 
 # Renderers
 require 'mc-markdown/renderers/base'
