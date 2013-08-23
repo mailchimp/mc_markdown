@@ -1,3 +1,4 @@
+- support passing options to renderers
 - add an html renderer that aliases redcarpet's
 
 # 0.4.0

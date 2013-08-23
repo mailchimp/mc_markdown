@@ -5,9 +5,7 @@ describe MCMarkdown::Renderers do
   describe "#use" do
 
     before :each do
-      if MCMarkdown::Renderers.send(:instance_variable_defined?, :@_store)
-        MCMarkdown::Renderers.send(:remove_instance_variable, :@_store)
-      end
+      remove_renderer_instances!
     end
 
     it "creates instances of redcarpet renderers" do
@@ -19,6 +17,20 @@ describe MCMarkdown::Renderers do
       expect( MCMarkdown::Renderers.use(:base) ).to eq instance
     end
 
+    it "passes options and uses them as a key" do
+      instance = MCMarkdown::Renderers.use :html, no_images: true
+      expect( instance.render "![](/foo.png)" ).to eq "<p>![](/foo.png)</p>\n"
+
+      second_instance = MCMarkdown::Renderers.use :html, no_images: false
+      expect( second_instance.render "![](/foo.png)" ).to eq "<p><img src=\"/foo.png\" alt=\"\"></p>\n"
+    end
+
+  end
+
+  def remove_renderer_instances!
+    if MCMarkdown::Renderers.send(:instance_variable_defined?, :@_store)
+      MCMarkdown::Renderers.send(:remove_instance_variable, :@_store)
+    end
   end
 
 end

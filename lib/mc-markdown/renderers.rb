@@ -2,8 +2,8 @@ module MCMarkdown
   module Renderers
     class << self
 
-      def use renderer_class
-        fetch(renderer_class)
+      def use renderer_class, options={}
+        fetch( { class: renderer_class, options: options } )
       end
 
       private
@@ -12,13 +12,14 @@ module MCMarkdown
           @_store ||= {}
         end
 
-        def fetch renderer_class
-          store.fetch(renderer_class) { add(renderer_class) }
+        def fetch renderer_key
+          store.fetch(renderer_key) { add(renderer_key) }
         end
 
-        def add renderer_class
-          store[renderer_class] = Redcarpet::Markdown.new(
-            ::MCMarkdown.const_get(renderer_class.to_s.capitalize)
+        def add renderer_key
+          store[renderer_key] = Redcarpet::Markdown.new(
+            ::MCMarkdown.const_get( renderer_key[:class].to_s.capitalize )
+              .new(renderer_key[:options])
           )
         end
 
