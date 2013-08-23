@@ -24,12 +24,6 @@ module MCMarkdown
         return "<h#{header_level} id='#{namespace}'>#{text}</h#{header_level}>"
       end
 
-      def self.included mod
-        unless defined?(extensions)
-          mod.send :include, Extensions
-        end
-      end
-
     end
   end
 end

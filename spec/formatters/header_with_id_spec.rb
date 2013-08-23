@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe MCMarkdown::Formatter::HeaderWithID do
 
-  class Subject < Redcarpet::Render::HTML
+  class Subject < MCMarkdown::Html
     include ::MCMarkdown::Formatter::HeaderWithID
   end
 

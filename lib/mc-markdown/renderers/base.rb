@@ -1,5 +1,5 @@
 module MCMarkdown
-  class Base < Redcarpet::Render::HTML
+  class Base < Html
     include ::MCMarkdown::Formatter::Lists
     include ::MCMarkdown::Formatter::Image
     include ::MCMarkdown::Formatter::Links
