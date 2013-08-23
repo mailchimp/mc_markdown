@@ -9,6 +9,7 @@ module MCMarkdown
       # add classes to images and render title as figure/figcaption
       # ![alt {class}](/path/to/img.jpg "caption")
       def image link, title, alt_text
+        return "![#{alt_text}](#{link}#{(title && !title.empty?) ? " \"#{title}\"" : ''})" if extensions[:no_images]
 
         classes = nil
         img_class = ""
@@ -32,7 +33,6 @@ module MCMarkdown
       # need to strip paragraph tags from around
       # figures, has potential to cause invalid markup
       def postprocess doc
-
         doc = doc.gsub( /<p><figure/, '<figure' ).gsub( /<\/figure><\/p>/, '</figure>' )
 
         if defined?(super)

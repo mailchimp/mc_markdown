@@ -18,4 +18,8 @@ describe MCMarkdown::Formatter::Links do
     render_string( "[text {class} _blank](/path)" ).should == "<p><a href='/path' class='class' target='_blank'>text</a></p>"
   end
 
+  it "respects the no_links option" do
+    expect( MCMarkdown.render( "[foo](/bar)", :base, no_links: true ) ).to eq "<p>[foo](/bar)</p>\n"
+  end
+
 end

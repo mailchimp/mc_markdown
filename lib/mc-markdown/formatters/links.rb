@@ -17,6 +17,7 @@ module MCMarkdown
       # add ability to add classes to links
       # [Link Test {class} _target ](link)
       def link link, title, content
+        return "[#{content}](#{link}#{(title && !title.empty?) ? " \"#{title}\"" : ''})" if extensions[:no_links]
 
         # default classes and target to nil
         classes = nil

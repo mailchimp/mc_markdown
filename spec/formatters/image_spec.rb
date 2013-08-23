@@ -22,4 +22,8 @@ describe MCMarkdown::Formatter::Image do
     render_string('![alt text {full}](/path/image.jpg "the caption")').should == "<figure class='img full'><img src='/path/image.jpg' alt='alt text' /><figcaption><p>the caption</p></figcaption></figure>"
   end
 
+  it "respects the no_images flag" do
+    expect( MCMarkdown.render( "![](/foo.png)", :base, no_images: true ) ).to eq "<p>![](/foo.png)</p>\n"
+  end
+
 end
