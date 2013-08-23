@@ -1,3 +1,4 @@
+# 0.4.1
 - image & links formatters respect `no_links` and `no_images` option flags
 - use the extensions module on the Html renderer so it extends to the others
 - support passing options to renderers
