@@ -15,6 +15,7 @@ require 'mc-markdown/formatters/blockquote'
 require 'mc-markdown/formatters/blocks'
 
 # Renderers
+require 'mc-markdown/renderers/html'
 require 'mc-markdown/renderers/base'
 require 'mc-markdown/renderers/guidebook'
 require 'mc-markdown/renderers/legal'
