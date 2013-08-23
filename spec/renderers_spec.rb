@@ -41,6 +41,10 @@ describe MCMarkdown do
     it "renders text" do
       expect( MCMarkdown.render "# Hello World" ).to eq "<h1>Hello World</h1>\n"
     end
+
+    it "allows passing options" do
+      expect( MCMarkdown.render( "![](/foo.png)", :html, no_images: true ) ).to eq "<p>![](/foo.png)</p>\n"
+    end
   end
 
 end

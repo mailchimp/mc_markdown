@@ -26,7 +26,7 @@ module MCMarkdown
     end
   end
 
-  def self.render input, renderer=:base
-    Renderers.use(renderer).render(input)
+  def self.render input, renderer=:base, options={}
+    Renderers.use(renderer, options).render(input)
   end
 end
