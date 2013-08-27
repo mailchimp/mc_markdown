@@ -18,10 +18,10 @@ module MCMarkdown
           wistia_id = attributes.delete(:id)
           options = defaults.merge(attributes)
 
-          query_params = options.each_with_object([]) do |(attr,value), out|
+          query_params = options.map do |attr,value|
             # camel case attribute names
-            string = attr.to_s.split('_').inject([]){ |buffer,e| buffer.push(buffer.empty? ? e : e.capitalize) }.join
-            out << "#{string}=#{value}"
+            camel_case = attr.to_s.split('_').inject([]){ |buffer,e| buffer.push(buffer.empty? ? e : e.capitalize) }.join
+            "#{camel_case}=#{value}"
           end
 
           html_params = {
@@ -54,9 +54,7 @@ module MCMarkdown
           end
 
           def render_params params
-            params.each_with_object([]) do |(attr,value), out|
-              out << "#{attr}='#{value}'"
-            end.join(' ')
+            params.map { |attr, value| "#{attr}='#{value}'" }.join(' ')
           end
 
       end
