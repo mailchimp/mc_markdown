@@ -1,3 +1,5 @@
+- add wistia video shorttag
+
 # 0.4.2
 - can now pass redcarpet extensions under the key `:extensions` in the render method
 
