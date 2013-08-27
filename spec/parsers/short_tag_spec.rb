@@ -17,8 +17,8 @@ describe MCMarkdown::Parser::ShortTag do
         expect( tag.type ).to eq 'video'
       end
 
-      it "returns an empty array of attributes" do
-        expect( tag.attributes ).to match_array []
+      it "returns an empty hash of attributes" do
+        expect( tag.attributes ).to eq( {} )
       end
     end
 
@@ -30,7 +30,7 @@ describe MCMarkdown::Parser::ShortTag do
       end
 
       it "returns the correct attributes" do
-        expect( tag.attributes ).to match_array [{"width"=>"500"},{"height"=>"400"}]
+        expect( tag.attributes ).to eq({"width"=>"500", "height"=>"400"})
       end
     end
 

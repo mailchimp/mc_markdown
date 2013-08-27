@@ -32,7 +32,10 @@ module MCMarkdown
           @orig = matched_string
           @data = @orig.match( Tag.pattern )[1].strip.split(' ')
           @type = @data.shift
-          @attributes = @data.map { |set| set.scan( attribute_pattern ) }.map { |pair| { pair[0][0] => pair[0][1] } }
+          @attributes = @data.map { |set| set.scan( attribute_pattern ) }.inject({}) do |out,pair|
+            out[ pair[0][0] ] = pair[0][1]
+            out
+          end
         end
 
         private
