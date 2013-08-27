@@ -3,7 +3,7 @@ require 'spec_helper'
 describe MCMarkdown::Parser::BlockTag do
   describe MCMarkdown::Parser::BlockTag::Block do
 
-    let(:block) { MCMarkdown::Parser::BlockTag::Block.new("{{note}}\nfoo bar\n{{/note}}") }
+    let(:block) { MCMarkdown::Parser::BlockTag::Block.new("<p>{{note}}</p>\nfoo bar\n<p>{{/note}}</p>") }
 
     it "matches on blocks" do
       expect(
@@ -15,7 +15,7 @@ describe MCMarkdown::Parser::BlockTag do
       expect( block.type ).to eq "note"
     end
 
-    it "collects block content under attributes" do
+    it "collects block content under attributes and strips errant tags" do
       expect( block.attributes[:content] ).to eq "foo bar"
     end
 

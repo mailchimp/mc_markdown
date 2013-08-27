@@ -1,17 +1,17 @@
 module MCMarkdown
   module Formatter
     module Blocks
-      BLOCK_PATTERN = "\{\{ (\/?) (notes|callout) \}\}"
 
-      # Ensure each open and close tag is on new line
       def preprocess doc
-        doc.gsub!( /(#{BLOCK_PATTERN})(.*?)(#{BLOCK_PATTERN})/mx ) do
-          open    = $1
-          content = $4.strip
-          close   = $5
-
-          "\n\n#{open}\n\n#{content}\n\n#{close}\n\n"
+        doc.gsub!( Parser::BlockTag::Block.open_block ) do |match|
+          "\n\n#{match}\n\n"
         end
+
+        doc.gsub!( Parser::BlockTag::Block.close_block ) do |match|
+          "\n\n#{match}\n\n"
+        end
+
+        # binding.pry
 
         if defined?(super)
           return super(doc)
@@ -20,24 +20,28 @@ module MCMarkdown
         end
       end
 
-      # Replace blocks enclosed in paragraphs with divs
       def postprocess doc
-        doc.gsub!( /<p>#{BLOCK_PATTERN}<\/p>/x ) do
-          is_closing_tag = ($1 == "/")
-          block_type = $2
-
-          if is_closing_tag
-            "</div>"
-          else
-            "<div class=\"#{block_type}\">"
-          end
-        end
+        doc = Parser::BlockTag.new(doc, BlockFormatter).parsed
 
         if defined?(super)
           return super(doc)
         else
           return doc
         end
+      end
+
+      class BlockFormatter < Parser::Formatter
+
+        def notes attributes={}
+          content = attributes[:content]
+          "<div class=\"notes\">\n\n#{content}\n\n</div>"
+        end
+
+        def callout attributes={}
+          content = attributes[:content]
+          "<div class=\"callout\">\n\n#{content}\n\n</div>"
+        end
+
       end
 
     end

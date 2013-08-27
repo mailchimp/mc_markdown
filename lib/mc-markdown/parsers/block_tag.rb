@@ -19,9 +19,34 @@ module MCMarkdown
       end
 
       class Block
-        def self.pattern
-          / \{\{ (.*?) \}\} (.*?) \{\{\/ (.*?) \}\} /xm
+        class << self
+          def pattern
+            / #{open_block} (.*?) #{close_block} /xm
+          end
+
+          def open_block
+            / (?:#{open_tag})? \{\{(.+?)\}\} #{repeated_spaces} (?:#{close_tag})? /x
+          end
+
+          def close_block
+            / (?:#{open_tag})? #{repeated_spaces} \{\{\/(.+?)\}\} (?:#{close_tag})? /x
+          end
+
+          def open_tag
+            / < (?:\w+?) > /x
+          end
+
+          def close_tag
+            / < (?:\/) (?:\w+?) > /x
+          end
+
+          private
+
+            def repeated_spaces
+              / (?:[\s\t]*) /x
+            end
         end
+
 
         attr_reader :orig
         attr_reader :type
