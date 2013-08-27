@@ -3,6 +3,7 @@ require 'redcarpet'
 # Util
 require 'mc-markdown/extensions'
 require 'mc-markdown/renderers'
+require 'mc-markdown/parsers/short_tag'
 
 # Formatters
 require 'mc-markdown/formatters/common_misspellings'
