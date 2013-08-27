@@ -1,0 +1,5 @@
+# Hello World
+
+{{note}}
+foo bar
+{{/note}}
