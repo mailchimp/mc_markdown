@@ -39,9 +39,7 @@ describe MCMarkdown::Parser::ShortTag do
 
   describe "#parsed" do
 
-    class TestFormatter
-      include MCMarkdown::Parser::Formatting
-
+    class TestFormatter < MCMarkdown::Parser::Formatter
       def video attributes=[]
         "woot"
       end

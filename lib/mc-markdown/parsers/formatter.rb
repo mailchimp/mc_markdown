@@ -1,7 +1,7 @@
 module MCMarkdown
   module Parser
 
-    module Formatting
+    class Formatter
 
       def format tag
         if self.respond_to? tag.type

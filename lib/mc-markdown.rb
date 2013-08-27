@@ -6,7 +6,7 @@ require 'mc-markdown/renderers'
 
 # Parsing
 require 'mc-markdown/parsers/short_tag'
-require 'mc-markdown/parsers/formatting'
+require 'mc-markdown/parsers/formatter'
 
 # Formatters
 require 'mc-markdown/formatters/common_misspellings'
