@@ -30,7 +30,7 @@ describe MCMarkdown::Parser::ShortTag do
       end
 
       it "returns the correct attributes" do
-        expect( tag.attributes ).to eq({"width"=>"500", "height"=>"400"})
+        expect( tag.attributes ).to eq({ width: "500", height: "400"})
       end
     end
 
