@@ -1,18 +1,6 @@
 module MCMarkdown
   module Parser
 
-    module Formatter
-
-      def format tag
-        if self.respond_to? tag.type
-          self.public_send(tag.type, tag.attributes)
-        else
-          tag.orig
-        end
-      end
-
-    end
-
     class ShortTag
 
       attr_reader :content

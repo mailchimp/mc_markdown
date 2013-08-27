@@ -7,13 +7,13 @@ require 'mc-markdown'
 BASE = Redcarpet::Markdown.new( MCMarkdown::Base )
 LEGAL = Redcarpet::Markdown.new( MCMarkdown::Legal )
 
-def input_string path
-  path = File.join( __dir__, "fixtures", "#{path}-input.md" )
+def input_string path, ext='md'
+  path = File.join( __dir__, "fixtures", "#{path}-input.#{ext}" )
   return IO.read( path )
 end
 
-def output_string path
-  path = File.join( __dir__, "fixtures", "#{path}-output.html" )
+def output_string path, ext='html'
+  path = File.join( __dir__, "fixtures", "#{path}-output.#{ext}" )
   return IO.read( path )
 end
 
@@ -22,7 +22,7 @@ def render_string str, renderer=BASE
 end
 
 def test_fixture path, renderer=BASE
-  render_string( input_string(path) ).should == output_string(path)
+  expect( render_string( input_string(path) ) ).to eq output_string(path)
 end
 
 describe 'spec_helper' do
