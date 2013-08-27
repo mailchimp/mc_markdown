@@ -13,6 +13,7 @@ require 'mc-markdown/formatters/lists'
 require 'mc-markdown/formatters/escape_merge_tags'
 require 'mc-markdown/formatters/blockquote'
 require 'mc-markdown/formatters/blocks'
+require 'mc-markdown/formatters/wistia'
 
 # Renderers
 require 'mc-markdown/renderers/html'
