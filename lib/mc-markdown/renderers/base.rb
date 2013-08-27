@@ -7,5 +7,6 @@ module MCMarkdown
     include ::MCMarkdown::Formatter::CommonMisspellings
     include ::MCMarkdown::Formatter::Blockquote
     include ::MCMarkdown::Formatter::Blocks
+    include ::MCMarkdown::Formatter::Wistia
   end
 end
