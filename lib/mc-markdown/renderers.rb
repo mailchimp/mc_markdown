@@ -3,7 +3,7 @@ module MCMarkdown
     class << self
 
       def use renderer_class, options={}
-        fetch( { class: renderer_class, options: options } )
+        fetch( { class: renderer_class, extensions: options.delete(:extensions), options: options } )
       end
 
       private
@@ -17,9 +17,11 @@ module MCMarkdown
         end
 
         def add renderer_key
+          extensions = renderer_key[:extensions] || {}
+
           store[renderer_key] = Redcarpet::Markdown.new(
-            ::MCMarkdown.const_get( renderer_key[:class].to_s.capitalize )
-              .new(renderer_key[:options])
+            ::MCMarkdown.const_get( renderer_key[:class].to_s.capitalize ).new( renderer_key[:options] ),
+            extensions
           )
         end
 

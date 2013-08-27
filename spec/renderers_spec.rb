@@ -45,6 +45,10 @@ describe MCMarkdown do
     it "allows passing options" do
       expect( MCMarkdown.render( "![](/foo.png)", :html, no_images: true ) ).to eq "<p>![](/foo.png)</p>\n"
     end
+
+    it "allows passing extensions" do
+      expect( MCMarkdown.render( "==highlight==", :html, extensions: { highlight: true } ) ).to eq "<p><mark>highlight</mark></p>\n"
+    end
   end
 
 end
