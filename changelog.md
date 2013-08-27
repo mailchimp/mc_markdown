@@ -1,3 +1,6 @@
+# 0.4.2
+- can now pass redcarpet extensions under the key `:extensions` in the render method
+
 # 0.4.1
 - image & links formatters respect `no_links` and `no_images` option flags
 - use the extensions module on the Html renderer so it extends to the others
