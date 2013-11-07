@@ -41,7 +41,7 @@ module MCMarkdown
               iframe += "#{glue}#{string}=#{value}"
             end
 
-            { width: params[:video_width], height: params[:video_height] }.each do |k,v|
+            { width: options[:video_width], height: options[:video_height] }.each do |k,v|
               html_params << ["#{k}='#{v}'"]
             end
 
