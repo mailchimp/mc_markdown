@@ -1,3 +1,5 @@
+# 0.4.3
+- fix wistia default options
 - add wistia video shorttag
 
 # 0.4.2
