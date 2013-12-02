@@ -11,8 +11,6 @@ module MCMarkdown
           "\n\n#{match}\n\n"
         end
 
-        # binding.pry
-
         if defined?(super)
           return super(doc)
         else
