@@ -1,3 +1,5 @@
+# 0.5.0
+- abstract block parsing to Parsers & Formatters for block & short tags
 - add wistia video shorttag
 
 # 0.4.2
