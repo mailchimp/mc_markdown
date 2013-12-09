@@ -4,7 +4,8 @@ require 'slugity'
 module MCMarkdown
 
   class Legal < Redcarpet::Render::HTML
-    include ::MCMarkdown::Formatter::Links
+    include Extensions
+    include Formatter::Links
 
     def list_item text, list_type
       text.gsub!(/(^\<p\>)|\<\/p\>$/, '')
