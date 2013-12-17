@@ -1,5 +1,6 @@
-# 0.5.1
+# 0.6.0
 - allow looser set of contents for merge tags
+- change to passing options to HeaderWithID, now a `header_with_id:` key and options for `:slug` and `:level`
 
 # 0.5.0
 - abstract block parsing to Parsers & Formatters for block & short tags

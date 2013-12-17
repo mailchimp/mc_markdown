@@ -3,7 +3,7 @@
 In your Gemfile:
 
 ```ruby
-gem "mc-markdown", :git => 'git@github.com:mailchimp/mc-markdown.git'
+gem "mc-markdown", git: 'git@github.com:mailchimp/mc-markdown.git'
 ```
 
 
