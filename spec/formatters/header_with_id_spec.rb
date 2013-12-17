@@ -15,11 +15,13 @@ describe MCMarkdown::Formatter::HeaderWithID do
   end
 
   it "adds an id to h1 headers" do
-    expect( render_string( "# Hello World", renderer ) ).to eq("<h1 id='section-hello-world'>Hello World</h1>")
+    expect( render_string( "# Hello World", renderer ) )
+      .to eq("<h1 id='section-hello-world'>Hello World</h1>")
   end
 
   it "uses the the slug if provided" do
-    expect( render_string( "# Hello World", renderer( header_with_id: { slug: "foo" }) ) ).to eq "<h1 id='foo-hello-world'>Hello World</h1>"
+    expect( render_string( "# Hello World", renderer( header_with_id: { slug: "foo" }) ) )
+      .to eq "<h1 id='foo-hello-world'>Hello World</h1>"
   end
 
   it "respects template_tag_headers for the section_id" do
@@ -28,7 +30,22 @@ describe MCMarkdown::Formatter::HeaderWithID do
   end
 
   it "doesn't affect headers under h1" do
-    expect( render_string( "## Hello World", renderer ) ).to eq "<h2>Hello World</h2>"
+    expect( render_string( "## Hello World", renderer ) )
+      .to eq "<h2>Hello World</h2>"
+  end
+
+  context "when given a header level" do
+
+    it "adds slugs to headers in header level" do
+      expect( render_string("## Hello World", renderer( header_with_id: { level: 2 } ) ) )
+        .to eq "<h2 id='section-hello-world'>Hello World</h2>"
+    end
+
+    it "accepts array of header levels" do
+      expect( render_string("# Hello\n\n## World", renderer( header_with_id: { level: [1,2] } ) ) )
+        .to eq "<h1 id='section-hello'>Hello</h1><h2 id='section-world'>World</h2>"
+    end
+
   end
 
   context "when extensions aren't present" do
@@ -44,7 +61,8 @@ describe MCMarkdown::Formatter::HeaderWithID do
     end
 
     it "adds IDs to headers" do
-      expect( render_string( "# Hello World", no_extension_renderer ) ).to eq("<h1 id='section-hello-world'>Hello World</h1>")
+      expect( render_string( "# Hello World", no_extension_renderer ) )
+        .to eq("<h1 id='section-hello-world'>Hello World</h1>")
     end
   end
 

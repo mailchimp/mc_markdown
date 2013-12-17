@@ -5,7 +5,8 @@ module MCMarkdown
     module HeaderWithID
 
       def header text, header_level
-        return "<h#{header_level}>#{text}</h#{header_level}>" if header_level != 1
+        header_levels = Array(header_options.fetch(:level, 1))
+        return "<h#{header_level}>#{text}</h#{header_level}>" unless header_levels.include?(header_level)
 
         # add ids to all h1 headers (pray they're unique)
         if header_options.fetch(:template_tag_headers, false)
