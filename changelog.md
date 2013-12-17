@@ -1,3 +1,6 @@
+# 0.5.1
+- allow looser set of contents for merge tags
+
 # 0.5.0
 - abstract block parsing to Parsers & Formatters for block & short tags
 
