@@ -65,7 +65,7 @@ module MCMarkdown
           section_content << "</div>"
           section_content << "</section>"
         else
-          section_content << "<div class='legal-section-header col span1of1'>"
+          section_content << "<div class='legal-section-header col span1of1 normalize'>"
           section_content << content.first.to_html
           section_content << "</div>"
         end
