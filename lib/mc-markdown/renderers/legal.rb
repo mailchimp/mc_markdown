@@ -37,9 +37,9 @@ module MCMarkdown
     # @param [String]
     # @return [String]
     def process_h1_sections doc
-      strung_doc = "<section class='col span2of3'>" << add_tooltips( doc ) << "</section>"
+      strung_doc = "<section class='col span2of3 normalize'>" << add_tooltips( doc ) << "</section>"
       strung_doc.gsub!( /(<h1>(.*?)<\/h1>)/ ).each do |match|
-        "</section><section class='col span1of1'>" << $1 << "</section><section class='col span2of3'>"
+        "</section><section class='col span1of1'>" << $1 << "</section><section class='col span2of3 normalize'>"
       end
       return strung_doc
     end
@@ -55,12 +55,12 @@ module MCMarkdown
 
         unless /^header/.match(section)
           section_content << "<section id='#{section}'>"
-          section_content << "<div class='col span2of3'>"
+          section_content << "<div class='col span2of3 normalize'>"
           content.each do |c|
             section_content << c.to_html
           end
           section_content << "</div>"
-          section_content << "<div class='col span1of3'>"
+          section_content << "<div class='col span1of3 normalize'>"
           section_content = add_tooltips( section_content )
           section_content << "</div>"
           section_content << "</section>"
