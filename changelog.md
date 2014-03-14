@@ -1,3 +1,4 @@
+# 0.6.1
 - added normalize class to span2of3 for legal renderer
 
 # 0.6.0
