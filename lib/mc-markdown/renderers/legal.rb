@@ -28,7 +28,7 @@ module MCMarkdown
         if section_count > 0
           return process_h1_sections( doc )
         end
-        return "<section class='col span2of3'>" << add_tooltips( doc ) << "</section>"
+        return "<section class='col span2of3 normalize'>" << add_tooltips( doc ) << "</section>"
       end
 
     end
