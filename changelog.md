@@ -1,3 +1,5 @@
+- added normalize class to span2of3 for legal renderer
+
 # 0.6.0
 - allow looser set of contents for merge tags
 - change to passing options to HeaderWithID, now a `header_with_id:` key and options for `:slug` and `:level`
