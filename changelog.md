@@ -1,3 +1,4 @@
+# 0.7.0
 - add ability to add arbitrary attributes to images & links [#5]
 
 # 0.6.0
