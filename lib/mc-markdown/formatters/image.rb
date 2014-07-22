@@ -2,31 +2,39 @@ module MCMarkdown
   module Formatter
     module Image
 
-      # Captures classes
-      # $1 => class
-      IMG_CLASSES_PATTERN = /.* \{(.*)\}\s?$ /x
+      # http://rubular.com/r/lss0C9HqoP
+      # $1 => alt
+      # $2 => class/attrs
+      IMG_ATTRIBUTES_PATTERN = /^ ([^_{}]+)? (?:{(.+?)})? \s?$/x
 
       # add classes to images and render title as figure/figcaption
       # ![alt {class}](/path/to/img.jpg "caption")
       def image link, title, alt_text
         return "![#{alt_text}](#{link}#{(title && !title.empty?) ? " \"#{title}\"" : ''})" if extensions[:no_images]
 
-        classes = nil
-        img_class = ""
+        match_data = IMG_ATTRIBUTES_PATTERN.match (alt_text || "")
+        alt_text = match_data[1] || ""
+        attrs    = match_data[2] || ""
 
-        if IMG_CLASSES_PATTERN.match(alt_text)
-          classes = IMG_CLASSES_PATTERN.match(alt_text)[1]
-          alt_text.gsub!( /\s?\{#{classes}\}\s?/, '' )
+        # check for attrs in class field
+        if attrs.include? ', '
+          attrs = attrs.split(', ').each_with_object([]) do |frag, out|
+            frag = frag.split ':'
+            out.push "#{frag[0].strip}='#{frag[1].strip}'"
+            out
+          end.join(" ") + " "
+        elsif !attrs.empty?
+          classes = attrs
+          attrs   = "class='#{attrs}' "
         end
 
         if title
-          title = ::Redcarpet::Markdown.new( self ).render(title).strip
-          img_tag = "<img src='#{link}' alt='#{alt_text}' />"
-          return "<figure class='img #{classes}'>" << img_tag << "<figcaption>#{title}</figcaption></figure>"
+          return "<figure class='img #{classes}'>" +
+                 "<img src='#{link}' alt='#{alt_text.strip}' />" +
+                 "<figcaption>" + ::Redcarpet::Markdown.new( self ).render(title).strip + "</figcaption>" +
+                 "</figure>"
         else
-          classes = "class='#{classes}' " if classes
-          img_tag = "<img src='#{link}' alt='#{alt_text}' #{classes}/>"
-          return img_tag
+          return "<img src='#{link}' alt='#{alt_text.strip}' #{attrs}/>"
         end
       end
 

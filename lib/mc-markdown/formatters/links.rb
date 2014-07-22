@@ -2,16 +2,12 @@ module MCMarkdown
   module Formatter
     module Links
 
-      # Captures link classes
-      # $1 => class
+      # http://rubular.com/r/nVJvYdiGud
+      # $1 => text
       # $2 => junk
-      # $3 => target
-      LINK_CLASSES_PATTERN = /.* \{(.*)\}\s? ( (_\w*)\s?$ )?/x
-
-      # Captures link targets
-      # $1 => junk
-      # $2 => target_attr
-      LINK_TARGET_PATTERN = /.* ( \{.*\}\s* )? (_\w*)\s?$/x
+      # $3 => class/attrs
+      # $4 => target
+      LINK_ATTRIBUTES_PATTERN = /^ ([^_{}]+) ({(.+?)})? (\s\_[a-zA-Z]+)? \s?$/x
 
 
       # add ability to add classes to links
@@ -19,42 +15,27 @@ module MCMarkdown
       def link link, title, content
         return "[#{content}](#{link}#{(title && !title.empty?) ? " \"#{title}\"" : ''})" if extensions[:no_links]
 
-        # default classes and target to nil
-        classes = nil
-        target = nil
+        match_data = LINK_ATTRIBUTES_PATTERN.match content
+        content    = match_data[1]
+        attrs      = match_data[3] || ""
+        target     = match_data[4]
+
+        # check for attrs in class field
+        if attrs.include? ', '
+          attrs = attrs.split(', ').each_with_object([]) do |frag, out|
+            frag = frag.split ':'
+            out.push "#{frag[0].strip}='#{frag[1].strip}'"
+            out
+          end.join(" ")
+        elsif !attrs.empty?
+          attrs = "class='#{attrs}'"
+        end
 
         # there is always a link
         return_string = "<a href='#{link}'"
-
-        # check for classes or targets
-        if LINK_CLASSES_PATTERN.match(content)
-          match_data = LINK_CLASSES_PATTERN.match(content)
-
-          # there is a class and maybe a target
-          classes = match_data[1]
-          target = match_data[3]
-
-
-        elsif LINK_TARGET_PATTERN.match(content)
-          match_data = LINK_TARGET_PATTERN.match(content)
-
-          # there is a target and no class
-          # (because we passed the class pattern)
-          classes = nil
-          target = match_data[2]
-
-        end
-
-        # add the target and classes params
-        return_string << " class='#{classes}'" if classes
-        return_string << " target='#{target}'" if target
-
-        # remove classes and target from the content
-        content.gsub!( /\s?\{#{classes}\}\s?/, "" ) if classes
-        content.gsub!( /\s?#{target}\s?/, "" ) if target
-
-        # close that tag with the content
-        return_string << ">#{content}</a>"
+        return_string << " " << attrs                if !attrs.empty?
+        return_string << " target='#{target.strip}'" if target
+        return_string << ">#{content.strip}</a>"
 
         return return_string
       end
