@@ -21,7 +21,7 @@ module MCMarkdown
         target     = match_data[4]
 
         # check for attrs in class field
-        if attrs.include? ', '
+        if attrs.include? ':'
           attrs = attrs.split(', ').each_with_object([]) do |frag, out|
             frag = frag.split ':'
             out.push "#{frag[0].strip}='#{frag[1].strip}'"

@@ -1,3 +1,5 @@
+- fix bug in arbitrary attributes that required there to be two or more
+
 # 0.7.0
 - add ability to add arbitrary attributes to images & links [#5]
 

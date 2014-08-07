@@ -18,6 +18,10 @@ describe MCMarkdown::Formatter::Links do
     render_string( "[multi text {class} _blank](/path)" ).should == "<p><a href='/path' class='class' target='_blank'>multi text</a></p>"
   end
 
+  it "generates link with single arbitrary attribute" do
+    expect( render_string("[foo {bar: baz}](/foo)") ).to eq "<p><a href='/foo' bar='baz'>foo</a></p>"
+  end
+
   it "generates links with arbitrary attributes" do
     render_string("[multi text {class: class_name, aria-role: link}](/path)").should == "<p><a href='/path' class='class_name' aria-role='link'>multi text</a></p>"
   end

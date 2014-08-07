@@ -22,6 +22,10 @@ describe MCMarkdown::Formatter::Image do
     render_string('![alt text {full}](/path/image.jpg "the caption")').should == "<figure class='img full'><img src='/path/image.jpg' alt='alt text' /><figcaption><p>the caption</p></figcaption></figure>"
   end
 
+  it "generates arbitrary attribute" do
+    render_string('![{aria-role: title}](/path/image.jpg)').should == "<p><img src='/path/image.jpg' alt='' aria-role='title' /></p>"
+  end
+
   it "generates arbitrary attributes" do
     render_string('![{class: class_name, aria-role: title}](/path/image.jpg)').should == "<p><img src='/path/image.jpg' alt='' class='class_name' aria-role='title' /></p>"
   end
