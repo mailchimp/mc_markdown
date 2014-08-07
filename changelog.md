@@ -1,3 +1,5 @@
+- fix allow for multiple paragraphs within a single blockquote
+
 # 0.7.1
 - add rough xml "extension" support to links
 - fix bug in arbitrary attributes that required there to be two or more
