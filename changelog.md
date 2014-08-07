@@ -1,3 +1,4 @@
+# 0.7.2
 - fix allow for multiple paragraphs within a single blockquote
 
 # 0.7.1
