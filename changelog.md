@@ -1,3 +1,4 @@
+# 0.7.3
 - fix adding {{break_quote}} from following paragraphs of blockquotes
 
 # 0.7.2 [broken!]
