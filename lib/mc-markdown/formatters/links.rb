@@ -31,6 +31,12 @@ module MCMarkdown
           attrs = "class='#{attrs}'"
         end
 
+        if extensions[:xml]
+          link.encode!(xml: :text)
+          # content gets loosely encoded before it
+          # enters the formatter
+        end
+
         # there is always a link
         return_string = "<a href='#{link}'"
         return_string << " " << attrs                if !attrs.empty?

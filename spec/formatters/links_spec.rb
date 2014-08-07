@@ -30,4 +30,14 @@ describe MCMarkdown::Formatter::Links do
     expect( MCMarkdown.render( "[foo](/bar)", :base, no_links: true ) ).to eq "<p>[foo](/bar)</p>\n"
   end
 
+  context "when xml extension is activated" do
+    it "escapes ampersands from links" do
+      expect( MCMarkdown.render("[foo](/bar?foo=baz&bang=bing)", :base, xml: true ) ).to eq "<p><a href='/bar?foo=baz&amp;bang=bing'>foo</a></p>\n"
+    end
+
+    it "escapes attributes if they contain html characters" do
+      expect( MCMarkdown.render("[foo {bar: hello & world}](/bar)", :base, xml: true ) ).to eq "<p><a href='/bar' bar='hello &amp; world'>foo</a></p>\n"
+    end
+  end
+
 end
