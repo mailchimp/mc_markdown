@@ -2,12 +2,12 @@ module MCMarkdown
   module Formatter
     module Blockquote
 
-      # http://rubular.com/r/eZv1W4mpfX
-      BLOCK_QUOTE_PATTERN = /^>.*$  \n^[^>]/x
+      # http://rubular.com/r/9DaY7IwzEV
+      BLOCK_QUOTE_PATTERN = /(?<!>\n) (^>\s[^>].+)/x
 
       def preprocess doc
         doc.gsub!(BLOCK_QUOTE_PATTERN) do |match|
-          match << "\n{{break_quote}}\n"
+          match.prepend "\n{{break_quote}}\n"
         end
 
         if defined?(super)

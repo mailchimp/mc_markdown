@@ -1,4 +1,6 @@
-# 0.7.2
+- fix adding {{break_quote}} from following paragraphs of blockquotes
+
+# 0.7.2 [broken!]
 - fix allow for multiple paragraphs within a single blockquote
 
 # 0.7.1
