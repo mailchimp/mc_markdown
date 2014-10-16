@@ -1,3 +1,4 @@
+# 0.8.1
 - change `docs` to `doc`
 
 # 0.8.0
