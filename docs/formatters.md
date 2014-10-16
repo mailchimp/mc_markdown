@@ -177,7 +177,7 @@ Adds an id to headers with a few options that can be passed to the renderer.
 Here we use the defaults for `level` and `slug`:
 
 ```ruby
-MCMarkdown.use(:base, header_with_id: { level: 1, slug: 'section' })
+MCMarkdown::Renderers.use(:base, header_with_id: { level: 1, slug: 'section' })
 ```
 
 `level` sets the heading level that will receive the ids. It will accept an array if you'd like to add IDs to multiple header levels.
