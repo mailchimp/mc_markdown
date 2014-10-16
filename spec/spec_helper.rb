@@ -2,7 +2,7 @@
 $LOAD_PATH << File.join( Dir.pwd, '/lib' )
 
 require 'pry'
-require 'mc-markdown'
+require 'mc_markdown'
 
 BASE = Redcarpet::Markdown.new( MCMarkdown::Base )
 LEGAL = Redcarpet::Markdown.new( MCMarkdown::Legal )

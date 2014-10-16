@@ -32,3 +32,8 @@ module MCMarkdown
     Renderers.use(renderer, options).render(input)
   end
 end
+
+require_relative 'renderers/html'
+require_relative 'renderers/base'
+require_relative 'renderers/guidebook'
+require_relative 'renderers/legal'

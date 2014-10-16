@@ -1,3 +1,5 @@
+- [BREAKING] change to proper gem name of `mc_markdown`
+
 # 0.7.3
 - fix adding {{break_quote}} from following paragraphs of blockquotes
 
