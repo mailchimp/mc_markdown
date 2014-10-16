@@ -1,4 +1,6 @@
-## Renderers
+---
+title: Renderers
+---
 
 There are three primary ways to use MCMarkdown renderers:
 - by using the `MCMarkdown.render` method

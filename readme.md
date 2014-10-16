@@ -42,10 +42,10 @@ html.render '# Hello World'
 
 ### Full Docs
 
-**[Renderers](docs/renderers.md)**  
+**[Renderers](doc/renderers.md)**  
 Our "top level" objects, they coordinate collections of formatters and take the `#render` method to render our input markdown.
 
-**[Formatters](docs/formatters.md)**  
+**[Formatters](doc/formatters.md)**  
 Formatters are the individual parts that differ from the base [Redcarpet](https://github.com/vmg/redcarpet) implementation. Some implement something like "shortag" codes in markdown.
 
 

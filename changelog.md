@@ -1,3 +1,5 @@
+- change `docs` to `doc`
+
 # 0.8.0
 - add documentation on use
 - [BREAKING] change to proper gem name of `mc_markdown`

@@ -1,4 +1,6 @@
-## Formatters
+---
+title: Formatters
+---
 
 Formatters are modules that get included into a Renderer class to modify the base Redcarpet behavior in different ways.
 
