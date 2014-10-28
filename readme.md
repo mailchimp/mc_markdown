@@ -40,6 +40,14 @@ html.render '# Hello World'
 ```
 
 
+Can also extract frontmatter
+
+```ruby
+frontmatter, html = MCMarkdown.render_with_frontmatter "---\nfoo:bar\n---\n\n# Hello World"
+# => { "foo" => "bar" }, "<h1>Hello World\n"
+```
+
+
 ### Full Docs
 
 **[Renderers](doc/renderers.md)**  

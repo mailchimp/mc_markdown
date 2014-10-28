@@ -1,3 +1,5 @@
+- add a :render_with_frontmatter option
+
 # 0.8.1
 - change `docs` to `doc`
 

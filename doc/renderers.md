@@ -35,6 +35,25 @@ MCMarkdown.render '# Hello World', header_with_ids: { slug: 'wut' }
 ```
 
 
+### MCMarkdown.render_with_frontmatter
+
+Takes the same params as `::render`, except returns an array in the format `[frontmatter, content]`. If no frontmatter is present it returns an empty hash.
+
+```ruby
+content = <<-EOF
+---
+foo: bar
+---
+
+# Hello World
+EOF
+
+frontmatter, content = MCMarkdown.render_with_frontmatter content
+```
+
+Note that it uses the `safe_yaml` library, so frontmatter keys will *always* be strings, and trying to deserialize objects won't work.
+
+
 ### MCMarkdown::Renderers.use
 
 This is what `MCMarkdown.render` uses internally to retrieve a renderer. If you need to pull a specific renderer, it takes the same options as the `::render` method minus the input.

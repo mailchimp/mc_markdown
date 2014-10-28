@@ -51,4 +51,78 @@ describe MCMarkdown do
     end
   end
 
+  describe "#render_with_frontmatter" do
+    it "renders text" do
+      frontmatter, rendered = MCMarkdown.render_with_frontmatter "# Hello World"
+
+      expect( frontmatter ).to eq({})
+      expect( rendered ).to eq "<h1>Hello World</h1>\n"
+    end
+
+    it "allows passing options" do
+      frontmatter, rendered = MCMarkdown.render_with_frontmatter( "![](/foo.png)", :html, no_images: true )
+
+      expect( frontmatter ).to eq({})
+      expect( rendered ).to eq "<p>![](/foo.png)</p>\n"
+    end
+
+    it "allows passing extensions" do
+      frontmatter, rendered = MCMarkdown.render_with_frontmatter( "==highlight==", :html, extensions: { highlight: true } )
+
+      expect( frontmatter ).to eq({})
+      expect( rendered ).to eq "<p><mark>highlight</mark></p>\n"
+    end
+
+    it "returns frontmatter as hash" do
+      frontmatter, rendered = MCMarkdown.render_with_frontmatter "---\nfoo: bar\n---\n\n# Hello World"
+
+      expect( frontmatter ).to eq "foo" => 'bar'
+      expect( rendered ).to eq "<h1>Hello World</h1>\n"
+    end
+
+    it "handles more 'complex' frontmatter types" do
+      content = <<-EOF
+---
+foo: bar
+an_array:
+  - one
+  - two
+a_hash:
+  three: four
+  five: six
+long_content: |
+  line one
+
+  line two
+---
+
+# Hello World
+EOF
+
+      frontmatter, rendered = MCMarkdown.render_with_frontmatter content
+
+      expect( frontmatter ).to eq "foo" => "bar",
+                                  "an_array" => ["one","two"],
+                                  "a_hash" => { "three" => "four",
+                                                "five" => "six" },
+                                  "long_content" => "line one\n\nline two\n"
+    end
+
+    it "ignores injection of unkown ruby types" do
+      content = <<-EOF
+---
+--- !ruby/hash:ClassBuilder
+foo: bar
+---
+
+# Hello World
+EOF
+
+      frontmatter, rendered = MCMarkdown.render_with_frontmatter content
+
+      expect( frontmatter ).to eq "foo" => "bar"
+      expect( rendered ).to eq "<h1>Hello World</h1>\n"
+    end
+  end
+
 end

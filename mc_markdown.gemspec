@@ -18,6 +18,7 @@ Gem::Specification.new do |s|
   # Utility
   s.add_dependency "redcarpet", "~> 3.0"
   s.add_dependency "nokogiri",  "~> 1.5"
-  s.add_dependency "slugity"
+  s.add_dependency "slugity",   "~> 1.0"
+  s.add_dependency "safe_yaml", "~> 1.0"
 
 end

@@ -31,6 +31,15 @@ module MCMarkdown
   def self.render input, renderer=:base, options={}
     Renderers.use(renderer, options).render(input)
   end
+
+  def self.render_with_frontmatter input, renderer=:base, options={}
+    require 'safe_yaml/load'
+
+    frontmatter, content = Parsers::Frontmatter.new(input).parsed
+    rendered_content     = Renderers.use(renderer, options).render(content)
+
+    [ frontmatter, rendered_content ]
+  end
 end
 
 require_relative 'renderers/html'
