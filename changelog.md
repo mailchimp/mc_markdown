@@ -1,3 +1,4 @@
+# 0.9.0
 - add a :render_with_frontmatter option
 
 # 0.8.1
