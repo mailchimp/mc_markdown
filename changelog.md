@@ -1,3 +1,5 @@
+- add BSD 3.0 license
+
 # 0.9.0
 - add a :render_with_frontmatter option
 

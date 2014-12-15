@@ -11,6 +11,7 @@ Gem::Specification.new do |s|
   s.authors       = ["Steven Sloan"]
   s.email         = ["stevenosloan@gmail.com"]
   s.homepage      = "http://github.com/mailchimp/mc_markdown"
+  s.license       = "New-BSD"
 
   s.files         = Dir["{lib}/**/*.rb"]
   s.require_path  = "lib"
