@@ -5,7 +5,6 @@ require 'pry'
 require 'mc_markdown'
 
 BASE = Redcarpet::Markdown.new( MCMarkdown::Base )
-LEGAL = Redcarpet::Markdown.new( MCMarkdown::Legal )
 
 def input_string path, ext='md'
   path = File.join( __dir__, "fixtures", "#{path}-input.#{ext}" )
@@ -29,10 +28,6 @@ describe 'spec_helper' do
 
   it "has BASE defined" do
     BASE.class.should == Redcarpet::Markdown
-  end
-
-  it "has LEGAL defined" do
-    LEGAL.class.should == Redcarpet::Markdown
   end
 
 end
