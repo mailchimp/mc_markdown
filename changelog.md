@@ -1,3 +1,4 @@
+# 1.0.0
 - [BREAKING] remove the `Legal` & `Guidebook` renderers. They were project specific and should be defined w/in their own projects. As an effect, Nokogiri is dropped as a dependency.
 - add BSD 3.0 license
 
